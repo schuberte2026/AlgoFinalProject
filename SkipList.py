@@ -82,6 +82,26 @@ class SkipList:
                 newNode.next[i] = curNode.next[i]
                 curNode.next[i] = newNode
 
+    def toString(self):
+        level_elements = []
+        curNode = self.head.next[0] # Points to base level
+        level_elements.append(curNode.next)
+
+        while curNode.next[0] != None:
+            curNode = curNode.next[0]
+            level_elements.append(curNode.next)
+
+        for i in range(self.MAX_LEVELS - 1, -1, -1):
+            for j in range(len(level_elements)):
+                print(level_elements[i][j])
+
+
+
+
+
+
+
+
 
 
 

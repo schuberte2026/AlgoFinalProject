@@ -35,6 +35,9 @@ class TestSkipList(unittest.TestCase):
         self.assertTrue(self.skiplist.remove(0))
         self.assertFalse(self.skiplist.contains(0))
 
+    def test_toString(self):
+        self.skiplist.toString()
+
 
 
 
