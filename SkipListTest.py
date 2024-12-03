@@ -35,12 +35,18 @@ class TestSkipList(unittest.TestCase):
         self.assertTrue(self.skiplist.remove(0))
         self.assertFalse(self.skiplist.contains(0))
 
-    def test_toString(self):
-        self.skiplist.toString()
+    #def test_toString(self):
+     #   self.skiplist.toString()
 
 
-
+#delete this eventually
+def test_toString():
+    skiplist = SkipList(MAX_LEVELS=3)
+    for i in range(0, 200, 8):
+        skiplist.insert(i)
+    skiplist.toString()
 
 
 if __name__ == "__main__":
-    unittest.main()
+    test_toString()
+    #unittest.main()

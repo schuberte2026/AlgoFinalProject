@@ -69,11 +69,14 @@ class SkipList:
         while randint(0, 1) == 1 and level < self.MAX_LEVELS:
             level += 1
 
-        newNode = Node(value, level + 1)
+            if level == self.levels and self.levels < self.MAX_LEVELS:
+                self.levels += 1
+                break
 
+        newNode = Node(value, level + 1)
         curNode = self.head
 
-        for i in range (self.levels - 1, -1, -1):
+        for i in range(self.levels - 1, -1, -1):
             while curNode.next[i] != None:
                 if curNode.next[i].value > value:
                     break # Goes down a level
@@ -83,28 +86,28 @@ class SkipList:
                 curNode.next[i] = newNode
 
     def toString(self):
-        level_elements = []
-        curNode = self.head.next[0] # Points to base level
-        level_elements.append(curNode.next)
-
-        while curNode.next[0] != None:
-            curNode = curNode.next[0]
-            level_elements.append(curNode.next)
-
-        for i in range(self.MAX_LEVELS - 1, -1, -1):
-            for j in range(len(level_elements)):
-                print(level_elements[i][j])
+        #four lines below prints the skip list sideways and shows memory addresses that each space in next array points to
+        node_nexts = self.head.next[0]
+        while (node_nexts != None):
+            print(f"{node_nexts.value}: {node_nexts.next}")
+            node_nexts = node_nexts.next[0]
 
 
+        # level_elements = []
+        # curNode = self.head.next[0] # Points to base level
+        # level_elements.append(curNode.next)
 
+        # while curNode.next[0] != None:
+        #     curNode = curNode.next[0]
+        #     level_elements.append(curNode.next)
 
+        # padded_level_elements = [lst + [None] * ((self.MAX_LEVELS) - len(lst)) for lst in level_elements]
 
-
-
-
-
-
-
-
-            
-
+        # for i in range(self.MAX_LEVELS - 1, -1, -1):
+        #     for j in range(len(padded_level_elements)):
+        #         currentNode = padded_level_elements[j][i]
+        #         if currentNode == None:
+        #             print(" ")
+        #         else:
+        #             print(currentNode.value, end="")
+        #     print()
