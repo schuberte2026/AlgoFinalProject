@@ -72,6 +72,9 @@ class SkipList:
             
             Returns:
             (bool): Whether the object was inserted into the SkipList."""
+        if self.contains(value):
+            return False
+
         level = 0
         inserted = False
         
@@ -91,11 +94,10 @@ class SkipList:
                     break # Goes down a level
                 current_node = current_node.next[i]
 
-            if i <= level and current_node.value != new_node.value:
+            if i <= level:
                 new_node.next[i] = current_node.next[i]
                 current_node.next[i] = new_node
                 inserted = True
-                
         return inserted
 
     def display(self):
